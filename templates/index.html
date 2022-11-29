@@ -28,6 +28,17 @@
     </tr>
   </thead>
   <tbody>
-    
+    {% for contact in contacts %}
+    <tr>
+      <td>{{ contact.1 }}</td>
+      <td>{{ contact.2 }}</td>
+      <td>{{ contact.3 }}</td>
+      <td>
+        <button>Eliminar</button>
+        <button>Editar</button>
+      </td>
+    </tr>
+      
+    {% endfor %}
   </tbody>
 </table>
