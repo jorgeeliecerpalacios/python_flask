@@ -47,9 +47,32 @@ def Add():
         #  con el redirect(url_for('')) lo que hacemos es redireccionar hacia la pagina que se encuentra dentro del parametro de url_for
         return redirect(url_for('Index'))
 
-@app.route('/edit')
-def Edit():
-    return 'hola Edit'
+@app.route('/edit/<string:id>')
+def get_contact(id):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM contacts WHERE id = {0}'.format(id))
+    data = cur.fetchall()
+    return render_template('edit_contact.html', contact = data[0])
+
+@app.route('/update/<string:id>', methods = ['POST'])
+def update_contact(id):
+    if request.method == 'POST':
+        fullname = request.form['fullname']
+        phone = request.form['phone']
+        email = request.form['email']
+        cur = mysql.connection.cursor()
+        cur.execute("""
+        UPDATE contacts
+        SET fullname = %s,
+            phone = %s,
+            email = %s
+        WHERE id = %s
+        """, (fullname, phone, email, id))
+        mysql.connection.commit() 
+        flash('Contacto actualizado correctamente')
+        return redirect(url_for('Index'))
+
+
 
 # para que me funcione la ruta del delete debo darle el parametro que esta recibe extra que en este caso es el id  y se lo mandamos con la etiqueta que se encuentra al lado del /
 @app.route('/delete/<string:id>')

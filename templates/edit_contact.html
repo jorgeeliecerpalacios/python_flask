@@ -1,0 +1,9 @@
+<!-- la diferencia de este formulario al otro es que encvimos los parametros del contexto dentro de value con su respectiva pocision -->
+<form action="/update/{{contact.0}}" method="POST">
+  <input  name="fullname" type="text" placeholder="Fullname" value="{{contact.1}}">
+  <input  name='phone' type="text" placeholder="Phone" value="{{contact.2}}">
+  <input  name="email" type="text" placeholder="Email" value="{{contact.3}}">
+  <button type="submit">
+    Save
+  </button>
+</form>
