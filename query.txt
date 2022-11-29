@@ -5,3 +5,7 @@ CREATE TABLE `contactos`.`contacts` (
   `phone` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
+
+
+
+          <!-- para dar el id de cada usuario le damos despues del nombre de la ruta /{{nombre de la variable del for.posicion inicia que es 0}} para que esta recoja el id e igualmente se hace lo mismo para el edit -->

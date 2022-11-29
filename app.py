@@ -51,9 +51,17 @@ def Add():
 def Edit():
     return 'hola Edit'
 
-@app.route('/delete')
-def Borrar():
-    return 'hola Borrar'
+# para que me funcione la ruta del delete debo darle el parametro que esta recibe extra que en este caso es el id  y se lo mandamos con la etiqueta que se encuentra al lado del /
+@app.route('/delete/<string:id>')
+def Borrar(id):
+    # aqui vamos hacer la consulta a la base de datos 
+    cur = mysql.connection.cursor()
+    # se escribe la consulta de la accion a realizar  
+    # con el format le damos formato tipo string para que se ejecute en la ruta dicha operacion
+    cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
+    mysql.connection.commit()
+    flash('Contacto eliminado correctamente')
+    return redirect(url_for('Index'))
 
 # arranque 
 if __name__ == '__main__':
