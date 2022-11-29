@@ -1,0 +1,33 @@
+
+<!-- con esto optengo los mensajes del servidor y se escribe es flashed -->
+{% with messages = get_flashed_messages() %}
+<!-- si existen mensajes despues los recorremos con el for -->
+{% if messages %}
+{% for message in messages %}
+  <p>{{ messages }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form action="/add_contact" method="POST">
+  <input  name="fullname" type="text" placeholder="Fullname">
+  <input  name='phone' type="text" placeholder="Phone">
+  <input  name="email" type="text" placeholder="Email">
+  <button type="submit">
+    Save
+  </button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <td>Fullname</td>
+      <td>Phone</td>
+      <td>Email</td>
+      <td>Operacion</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>

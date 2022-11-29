@@ -1,0 +1,7 @@
+# query para crear tablas
+CREATE TABLE `contactos`.`contacts` (
+  `id` INT NULL AUTO_INCREMENT,
+  `fullname` VARCHAR(255) NULL,
+  `phone` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`))
